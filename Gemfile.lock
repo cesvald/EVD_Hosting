@@ -243,7 +243,7 @@ GEM
       rails (>= 4.0)
       responders
     public_suffix (3.0.2)
-    puma (3.9.1)
+    puma (3.12.3)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
