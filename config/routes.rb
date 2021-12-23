@@ -80,6 +80,14 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  namespace :api do
+    resources :guests do
+      collection do
+        get 'by_email_in_modality'
+      end
+    end
+  end
   
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
   

@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: participant_spaces
+#
+#  id             :integer          not null, primary key
+#  participant_id :integer
+#  space_id       :integer
+#  note           :string
+#
 class ParticipantSpace < ApplicationRecord
   
   belongs_to :participant

@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: houses
+#
+#  id          :integer          not null, primary key
+#  name        :string           not null
+#  sketch      :string
+#  location_id :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  open_stay   :boolean          default(FALSE)
+#
 class House < ApplicationRecord
   belongs_to :location
   has_many :rooms, :dependent => :destroy

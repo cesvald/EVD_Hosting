@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: participants
+#
+#  id            :integer          not null, primary key
+#  guest_id      :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  deposit_state :string           default("pending")
+#
 class Participant < ApplicationRecord
   
   belongs_to :guest
