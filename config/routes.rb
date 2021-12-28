@@ -87,6 +87,12 @@ Rails.application.routes.draw do
         get 'by_email_in_modality'
       end
     end
+
+    resources :modalities, only: :index do
+      collection do
+        get 'price'
+      end
+    end
   end
   
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
