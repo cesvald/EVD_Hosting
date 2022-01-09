@@ -19,7 +19,7 @@ class Api::ModalitiesController < Api::BaseController
       amount = amount + space_inscripcion.amount
     end
     respond_to do |format|
-      format.json { render json: amount }
+      format.json { render json:  ActionController::Base.helpers.number_with_precision(amount, precision: 2, separator: ".") }
     end
   end
 end
