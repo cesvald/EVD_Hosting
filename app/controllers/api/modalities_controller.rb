@@ -5,7 +5,7 @@ class Api::ModalitiesController < Api::BaseController
     modality_name.strip!
     p "MODALITY NAME"
     p modality_name
-    modality = event.modalities.where('LOWER(modalities.name) like ?', modality_name.downcase).first
+    modality = event.modalities.where('LOWER(modalities.name) like ?', "#{modality_name.downcase}%").first
     space = modality.spaces.joins(:place).where('LOWER(places.name) = ?', params[:place].downcase).first
     p "THE SPACE AMOUNT IS"
     p space.amount
