@@ -24,21 +24,26 @@
             label.control-label Categoría
           .form-wrapper
             = builder.select :space_id, (builder.object.nil? || builder.object.space.nil? ? [] : options_for_select(builder.object.space.modality.spaces.joins(:place).pluck("places.name || ' (' || spaces.amount || ' USD)'", "spaces.id"), builder.object.space.id)), {}, {class: "form-control space_select", include_blank: true, required: true}
-      .col-lg-3  
+      .col-lg-2  
         .form-group
           .form-label
             label.control-label Observaciones
           .form-wrapper
             = builder.text_field :note, class: "form-control"
-      .col-lg-3
+      .col-lg-2
+        .form-group
+          .form-label
+            label.control-label Resultado
+          .form-wrapper
+            = builder.select :status,  ParticipantSpace.statuses.map { |key, value| [t("activerecord.enum.participant_spaces.status.#{key}").humanize, key] }, {include_blank: true}, class: "form-control"
+      .col-lg-2
         .form-group
           .form-label.invisible.control-label eliminar
-          div= builder.link_to_remove "Eliminar", class: "btn btn-danger"
-    
+          div= builder.link_to_remove "Eliminar", class: "btn btn-danger"    
     br
-    
+
   = f.link_to_add "Adicionar modalidad", :participant_spaces, class: "btn btn-sm btn-default"
-  
+
   br
   br
   br

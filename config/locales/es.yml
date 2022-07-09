@@ -115,7 +115,12 @@ es:
                 place: "Espacio"
                 amount: "Valor (USD)"
                 place_id: "Categoría"
-    
+        enum:
+            participant_spaces:
+                status:
+                    passed: 'pasó'
+                    not_passed: 'no pasó'
+                    retired: 'retirado'
     participant:
         deposit:
             state:

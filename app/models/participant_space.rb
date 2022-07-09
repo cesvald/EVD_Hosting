@@ -18,6 +18,8 @@ class ParticipantSpace < ApplicationRecord
   before_destroy :add_destroy_log
   after_update :add_update_log
   
+  enum status: [:passed, :not_passed, :retired]
+  
   def add_create_log
     participant.change_logs.create(change: "creó la modalidad #{to_s}", author_id: author_id)
   end

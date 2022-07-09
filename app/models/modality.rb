@@ -24,7 +24,7 @@ class Modality < ApplicationRecord
 	
 	scope :composed, ->(composed) { where('is_composed = :composed', {composed: composed}) }
 	scope :compositions_by_name, -> { compositions.joins(:submodalities).order("modalities.name ASC") }
-	
+
 	def add_discount(composition)
 		spaces.each do |space|
 			total_space = space.amount
@@ -32,7 +32,7 @@ class Modality < ApplicationRecord
 			space.update_attribute(:amount, total_space)
 		end
 	end
-	
+
 	def remove_discount(composition)
 		spaces.each do |space|
 			total_space = space.amount
