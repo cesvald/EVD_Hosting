@@ -32,6 +32,7 @@
 class Guest < ApplicationRecord
 	has_many :bookings
 	has_many :beds, through: :bookings
+	has_many :participants
 	
 	scope :by_name, ->(name) { where( 'name ILIKE :name', {name: "%#{name}%"} ) }
 	scope :by_surname, ->(surname) { where( 'surname ILIKE :surname', {surname: "%#{surname}%"} ) }
@@ -56,5 +57,4 @@ class Guest < ApplicationRecord
 	    	end
 	    end
 	end
-	
 end
