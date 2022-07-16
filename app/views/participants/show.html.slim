@@ -75,7 +75,7 @@ div
               td= l participant_space.space.modality.start_at, format: :date
               td= l participant_space.space.modality.end_at, format: :date
               td= to_currency participant_space.space.amount
-              td= t("activerecord.enum.participant_spaces.status.#{participant_space.status}").humanize
+              td= participant_space.status.present? ? t("activerecord.enum.participant_spaces.status.#{participant_space.status}").humanize : ''
               td= participant_space.note
       
       br
