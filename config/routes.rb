@@ -85,6 +85,7 @@ Rails.application.routes.draw do
     resources :guests do
       collection do
         get 'by_email_in_modality'
+        get 'by_email'
       end
     end
 

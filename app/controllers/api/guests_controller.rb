@@ -10,4 +10,11 @@ class Api::GuestsController < Api::BaseController
       format.json { render json:  [is_there, request.referrer] }
     end
   end
+
+  def by_email
+    is_there = Modality.select('guests.email').joins(spaces: [participants: :guest]).where('guests.email ILIKE ?', params[:student_email].downcase).any?
+    respond_to do |format|
+      format.json { render json:  [is_there, request.referrer] }
+    end
+  end
 end
