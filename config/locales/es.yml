@@ -118,8 +118,8 @@ es:
         enum:
             participant_spaces:
                 status:
-                    passed: 'pasó'
-                    not_passed: 'no pasó'
+                    passed: 'aprobado'
+                    not_passed: 'reprobado'
                     retired: 'retirado'
     participant:
         deposit:
