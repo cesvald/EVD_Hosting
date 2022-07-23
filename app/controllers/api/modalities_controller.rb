@@ -15,7 +15,7 @@ class Api::ModalitiesController < Api::BaseController
       amount = amount + space_material.amount
     end
     if params[:cuota] == '1'
-      space_inscripcion = modality.spaces.joins(:place).where('places.name = ?', 'GASTOS ADMINISTRATIVOS').first
+      space_inscripcion = modality.spaces.joins(:place).where('places.name = ?', params[:inscripcion]).first
       amount = amount + space_inscripcion.amount
     end
     respond_to do |format|
