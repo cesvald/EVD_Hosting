@@ -26,7 +26,8 @@ CREATE TABLE public.air_tickets (
     leave_from character varying,
     estimated_at timestamp without time zone,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    deleted_at timestamp without time zone
 );
 
 
@@ -71,7 +72,8 @@ CREATE TABLE public.beds (
     room_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    usable boolean DEFAULT true
+    usable boolean DEFAULT true,
+    deleted_at timestamp without time zone
 );
 
 
@@ -108,7 +110,8 @@ CREATE TABLE public.bookings (
     updated_at timestamp without time zone NOT NULL,
     amount numeric,
     deposit_amount numeric,
-    deposit_state character varying DEFAULT 'pending'::character varying
+    deposit_state character varying DEFAULT 'pending'::character varying,
+    deleted_at timestamp without time zone
 );
 
 
@@ -145,7 +148,8 @@ CREATE TABLE public.change_logs (
     logable_id integer,
     logable_type character varying,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    deleted_at timestamp without time zone
 );
 
 
@@ -177,7 +181,8 @@ CREATE TABLE public.compositions (
     id integer NOT NULL,
     modality_id integer,
     submodality_id integer,
-    discount numeric
+    discount numeric,
+    deleted_at timestamp without time zone
 );
 
 
@@ -243,7 +248,8 @@ CREATE TABLE public.events (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     deposit_amount numeric DEFAULT 0,
-    international boolean DEFAULT false
+    international boolean DEFAULT false,
+    deleted_at timestamp without time zone
 );
 
 
@@ -296,7 +302,8 @@ CREATE TABLE public.guests (
     comments text,
     is_initiate boolean,
     age integer,
-    outside boolean DEFAULT false
+    outside boolean DEFAULT false,
+    deleted_at timestamp without time zone
 );
 
 
@@ -330,7 +337,8 @@ CREATE TABLE public.historicals (
     start_date date,
     location_id integer,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    deleted_at timestamp without time zone
 );
 
 
@@ -364,7 +372,8 @@ CREATE TABLE public.houses (
     location_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    open_stay boolean DEFAULT false
+    open_stay boolean DEFAULT false,
+    deleted_at timestamp without time zone
 );
 
 
@@ -395,7 +404,8 @@ CREATE TABLE public.locations (
     id integer NOT NULL,
     name character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    deleted_at timestamp without time zone
 );
 
 
@@ -430,7 +440,8 @@ CREATE TABLE public.modalities (
     updated_at timestamp without time zone NOT NULL,
     start_at timestamp without time zone,
     end_at timestamp without time zone,
-    is_composed boolean DEFAULT false NOT NULL
+    is_composed boolean DEFAULT false NOT NULL,
+    deleted_at timestamp without time zone
 );
 
 
@@ -462,6 +473,7 @@ CREATE TABLE public.participant_spaces (
     participant_id integer,
     space_id integer,
     note character varying,
+    deleted_at timestamp without time zone,
     status smallint
 );
 
@@ -494,7 +506,8 @@ CREATE TABLE public.participants (
     guest_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    deposit_state character varying DEFAULT 'pending'::character varying
+    deposit_state character varying DEFAULT 'pending'::character varying,
+    deleted_at timestamp without time zone
 );
 
 
@@ -541,7 +554,8 @@ CREATE TABLE public.payments (
     method character varying,
     reason character varying DEFAULT 'Evento'::character varying,
     payable_id integer,
-    payable_type character varying
+    payable_type character varying,
+    deleted_at timestamp without time zone
 );
 
 
@@ -572,7 +586,8 @@ CREATE TABLE public.places (
     id integer NOT NULL,
     name character varying,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    deleted_at timestamp without time zone
 );
 
 
@@ -693,7 +708,8 @@ CREATE TABLE public.rooms (
     name character varying NOT NULL,
     house_id integer,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    deleted_at timestamp without time zone
 );
 
 
@@ -736,7 +752,8 @@ CREATE TABLE public.spaces (
     amount numeric DEFAULT 0,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    is_active boolean DEFAULT true NOT NULL
+    is_active boolean DEFAULT true NOT NULL,
+    deleted_at timestamp without time zone
 );
 
 
@@ -771,7 +788,8 @@ CREATE TABLE public.stays (
     end_at timestamp without time zone,
     amount numeric,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    deleted_at timestamp without time zone
 );
 
 
@@ -1708,6 +1726,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20181203025216'),
 ('20191220142020'),
 ('20191220150204'),
+('20220513033918'),
 ('20220709062557');
 
 
