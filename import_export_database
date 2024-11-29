@@ -1,7 +1,7 @@
 HEROKU UPDATE
 
-heroku pg:backups capture --remote sky_prod
-curl -o latest.dump `heroku pg:backups public-url --remote sky_prod`
+heroku pg:backups:capture
+curl -o latest.dump `heroku pg:backups public-url`
 
 ==Restore Remote Heroku==
 Upload latest.dump to S3 and make it public

@@ -4,7 +4,7 @@ table_header = wb.styles.add_style b: true, alignment: {horizontal: :center}
 table_cell = wb.styles.add_style alignment: {horizontal: :center}
 title = wb.styles.add_style b: true, sz: 14
 wb.add_worksheet(name: "Participantes - eventos") do |sheet|
-    row = ["Nombre", "Apellido", "Email", "País"]
+    row = ["Nombre", "Apellido", "Email", "Teléfono Fijo", "Teléfono Celular", "País"]
     modalities = Event.find(params[:id]).modalities.order(is_composed: :desc, name: :asc)
     modalities.each do |modality|
         row.push(modality.name)
@@ -16,7 +16,7 @@ wb.add_worksheet(name: "Participantes - eventos") do |sheet|
     sheet.add_row row, style: table_header
     
     @participants.each do |participant|
-        row = [participant.guest.name, participant.guest.surname, participant.guest.email, participant.guest.country]
+        row = [participant.guest.name, participant.guest.surname, participant.guest.email, participant.guest.phone_number, participant.guest.mobile_number, participant.guest.country]
         composed_space = participant.spaces.composed(true).first
         if composed_space
             compositions = composed_space.modality.compositions.joins(:submodality).order("modalities.name ASC").eager_load(submodality: :spaces)
